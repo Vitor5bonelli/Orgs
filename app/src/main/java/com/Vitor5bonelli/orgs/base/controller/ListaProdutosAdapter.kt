@@ -12,8 +12,10 @@ import com.Vitor5bonelli.orgs.base.model.Produto
 
 class ListaProdutosAdapter(
     private val ctx: Context,
-    private val produtos: List<Produto>
+    produtos: List<Produto>
 ) : RecyclerView.Adapter<ListaProdutosAdapter.ViewHolder>() {
+
+    private val produtos = produtos.toMutableList()
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
@@ -41,4 +43,9 @@ class ListaProdutosAdapter(
     }
 
     override fun getItemCount(): Int = produtos.size
+    fun update(produtos: List<Produto>) {
+        this.produtos.clear()
+        this.produtos.addAll(produtos)
+        notifyDataSetChanged()
+    }
 }

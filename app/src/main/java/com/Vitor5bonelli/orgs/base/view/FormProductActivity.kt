@@ -9,18 +9,24 @@ import android.widget.Toast
 import com.Vitor5bonelli.orgs.R
 import com.Vitor5bonelli.orgs.base.dao.ProdutoDao
 import com.Vitor5bonelli.orgs.base.model.Produto
+import com.Vitor5bonelli.orgs.databinding.ActivityFormProductBinding
+import com.Vitor5bonelli.orgs.databinding.ActivityListaProdutosBinding
 import java.math.BigDecimal
 
-class FormProductActivity : AppCompatActivity(R.layout.activity_form_product){
+class FormProductActivity : AppCompatActivity(){
+    private lateinit var afpb: ActivityFormProductBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        afpb = ActivityFormProductBinding.inflate(layoutInflater)
+        setContentView(afpb.root)
 
-        val saveButton = findViewById<Button>(R.id.saveBTN)
+        val saveButton = afpb.saveBTN
+
         saveButton.setOnClickListener{
-            val nameField = findViewById<EditText>(R.id.nameET)
-            val descField = findViewById<EditText>(R.id.descET)
-            val priceField = findViewById<EditText>(R.id.priceEt)
+            val nameField = afpb.nameET
+            val descField = afpb.descET
+            val priceField = afpb.priceEt
 
             val name = nameField.text.toString()
             val desc = descField.text.toString()
@@ -43,6 +49,7 @@ class FormProductActivity : AppCompatActivity(R.layout.activity_form_product){
 
             Toast.makeText(this, "$name foi adicionado!", Toast.LENGTH_LONG).show()
             Log.i("ListaDeProds", "${dao.getAll()}")
+            finish()
         }
     }
 }

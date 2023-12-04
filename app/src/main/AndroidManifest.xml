@@ -17,7 +17,7 @@
             android:exported="true">
         </activity>
         <activity
-            android:name=".base.view.MainActivity"
+            android:name=".base.view.ListaProdutosActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

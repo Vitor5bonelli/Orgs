@@ -4,12 +4,15 @@ import com.Vitor5bonelli.orgs.base.model.Produto
 
 class ProdutoDao {
 
-    private val produtos = mutableListOf<Produto>()
     fun add(produto: Produto){
-        produtos.add(produto)
+        Companion.produtos.add(produto)
     }
 
     fun getAll() : List<Produto>{
-        return produtos.toList()
+        return Companion.produtos.toList()
+    }
+
+    companion object {
+        private val produtos = mutableListOf<Produto>()
     }
 }

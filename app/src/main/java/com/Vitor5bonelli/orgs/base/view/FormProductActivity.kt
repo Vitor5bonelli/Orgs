@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.Vitor5bonelli.orgs.R
+import com.Vitor5bonelli.orgs.base.dao.ProdutoDao
 import com.Vitor5bonelli.orgs.base.model.Produto
 import java.math.BigDecimal
 
@@ -37,7 +38,11 @@ class FormProductActivity : AppCompatActivity(R.layout.activity_form_product){
                 preco = price
             )
 
-            Toast.makeText(this, "$novoProduto", Toast.LENGTH_LONG).show()
+            val dao = ProdutoDao()
+            dao.add(novoProduto)
+
+            Toast.makeText(this, "$name foi adicionado!", Toast.LENGTH_LONG).show()
+            Log.i("ListaDeProds", "${dao.getAll()}")
         }
     }
 }
